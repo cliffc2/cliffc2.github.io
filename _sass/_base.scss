@@ -156,6 +156,7 @@ header {
     @include background-cover;
     background-position: center;
     background-image: url('../img/KASPA2025C400.jpg');
+    background-size: contain; // whole image fits inside
     text-align: center;
     color: white;
     .header-content {
