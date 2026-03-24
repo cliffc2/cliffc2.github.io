@@ -1,0 +1,101 @@
+<!-- _includes/qwen-chat.html -->
+<div id="qwen-chat-container">
+  <div id="qwen-chat-messages"></div>
+  <div id="qwen-chat-input-area">
+    <input type="text" id="qwen-chat-input" placeholder="Ask Qwen 3.5 something...">
+    <button id="qwen-chat-send">Send</button>
+  </div>
+</div>
+
+<script src="https://js.puter.com/v2/"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const messagesContainer = document.getElementById('qwen-chat-messages');
+  const inputField = document.getElementById('qwen-chat-input');
+  const sendButton = document.getElementById('qwen-chat-send');
+  
+  function addMessage(content, isUser = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = isUser ? 'user-message' : 'ai-message';
+    messageDiv.textContent = content;
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+  
+  async function sendMessage() {
+    const message = inputField.value.trim();
+    if (!message) return;
+    
+    addMessage(message, true);
+    inputField.value = '';
+    
+    try {
+      const response = await puter.ai.chat(message, { 
+        model: "qwen/qwen3.5-397b-a17b" 
+      });
+      addMessage(response);
+    } catch (error) {
+      addMessage('Error: ' + error.message);
+    }
+  }
+  
+  sendButton.addEventListener('click', sendMessage);
+  inputField.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+});
+</script>
+
+<style>
+#qwen-chat-container {
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+#qwen-chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.user-message {
+  background: #e3f2fd;
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: 4px;
+  text-align: right;
+}
+
+.ai-message {
+  background: #f5f5f5;
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: 4px;
+}
+
+#qwen-chat-input-area {
+  display: flex;
+  gap: 8px;
+}
+
+#qwen-chat-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#qwen-chat-send {
+  padding: 8px 16px;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+</style>
