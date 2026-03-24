@@ -10,6 +10,14 @@
 <script src="https://js.puter.com/v2/"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize Puter in anonymous mode to avoid signup popup
+  puter.init({
+    auth: {
+      // Use anonymous mode - no signup required
+      anonymous: true
+    }
+  });
+  
   const messagesContainer = document.getElementById('qwen-chat-messages');
   const inputField = document.getElementById('qwen-chat-input');
   const sendButton = document.getElementById('qwen-chat-send');
@@ -47,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <style>
+/* Same CSS as before */
 #qwen-chat-container {
   max-width: 600px;
   margin: 20px auto;
