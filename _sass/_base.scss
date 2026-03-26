@@ -1,11 +1,22 @@
 html,
+/* Force entire site to use Helvetica */
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, li, span, div, blockquote,
+.section-heading,
+.btn,
+.navbar,
+.nav-link {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
 body {
     height: 100%;
     width: 100%;
 }
 
 body {
-    @include serif-font;
+    @include Helvetica;
 }
 
 hr {
