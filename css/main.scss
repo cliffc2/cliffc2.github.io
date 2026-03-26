@@ -2,9 +2,16 @@
 ---
 
 @charset "utf-8";
-
+/* Change entire site to Helvetica */
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, li, span, div,
+.section-heading,
+.btn {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
 // Example Defaults
-$base-font-family: Helvetica, Arial, sans-serif;
+// $base-font-family: Helvetica, Arial, sans-serif;
 // $base-font-size:   16px;
 // $small-font-size:  $base-font-size * 0.875;
 // $base-line-height: 1.5;
