@@ -17,10 +17,6 @@ body {
     width: 100%;
 }
 
-body {
-    @include Helvetica;
-}
-
 hr {
     border-color: $theme-primary;
     border-width: 3px;
@@ -38,16 +34,6 @@ a {
     &:focus {
         color: darken($theme-primary, 10%);
     }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    @include sans-serif-font;
-}
 
 p {
     font-size: 16px;
@@ -85,11 +71,9 @@ aside {
 .navbar-default {
     background-color: white;
     border-color: rgba($theme-dark, .5);
-    @include sans-serif-font;
     @include transition-all;
     .navbar-header .navbar-brand {
         color: $theme-primary;
-        @include sans-serif-font;
         font-weight: 700;
         text-transform: uppercase;
         &:hover,
@@ -320,7 +304,6 @@ header {
 }
 
 .btn {
-    @include sans-serif-font;
     border: none;
     border-radius: 300px;
     font-weight: 700;
